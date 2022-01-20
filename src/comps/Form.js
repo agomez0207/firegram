@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ProgressBar from './ProgressBar';
 
 const Form = () => {
   const allowedTypes = ["image/png", "image/jpeg"];
@@ -23,8 +24,9 @@ const Form = () => {
       <span>+</span>
       </label>
       <div className="output">
-        {error && <div className="error"> { error } </div>}
-        {file && <div> { file } </div>}
+        { error && <div className="error"> { error } </div> }
+        { file && <div> { file.name } </div> }
+        { file && <ProgressBar file={file} setFile={setFile} /> }
       </div>
     </form>
   )

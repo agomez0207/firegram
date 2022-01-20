@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
-import * as firebase from "firebase/app";
-import 'firebase/storage';
-import 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
+import { getFirestore, serverTimestamp } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,13 +13,12 @@ const firebaseConfig = {
   projectId: "firegram-d8711",
   storageBucket: "firegram-d8711.appspot.com",
   messagingSenderId: "13075056032",
-  appId: "1:13075056032:web:bda9de660f3b22dc53d0c5"
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const projectStorage = getStorage(app);
+const projectFirestore = getFirestore(app);
+const timestamp = serverTimestamp();
 
-const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
-
-export { projectStorage, projectFirestore};
+export { projectStorage, projectFirestore, timestamp };
