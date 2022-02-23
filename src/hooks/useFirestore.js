@@ -11,7 +11,6 @@ const useFirestore = (collection) => {
         const unsub = onSnapshot(q, (snap) => {
             let documents = [];
             snap.docs.forEach(doc => {
-                console.log(doc.id);
                 documents.push({...doc.data(), id: doc.id});
             });
             setDocs(documents);
